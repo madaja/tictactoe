@@ -51,11 +51,36 @@ class TicTacToe
         end
     end
     def xturn(str)
+        while (!@ttt_board.include?(str))
+            puts "Invalid play. Please enter a cell between A1 and C3."
+            str = gets.chomp.downcase
+        end
+        while (@played_cells.include?(str))
+            puts "Error. That cell has already been claimed. Choose another cell."
+            str = gets.chomp.downcase
+            while (!@ttt_board.include?(str))
+                puts "Invalid play. Please enter a cell between A1 and C3."
+                str = gets.chomp.downcase
+            end
+        end
         changecell(str, "X")
-        @xplayed_cells.push(str)
-        p @xplayed_cells
+        @played_cells.push(str)
+        p @played_cells
     end
     def oturn(str)
+        while (!@ttt_board.include?(str))
+            puts "Invalid play. Please enter a cell between A1 and C3."
+            str = gets.chomp.downcase
+        end
+        while (@played_cells.include?(str))
+            puts "Error. That cell has already been claimed. Choose another cell."
+            str = gets.chomp.downcase
+            while (!@ttt_board.include?(str))
+                puts "Invalid play. Please enter a cell between A1 and C3."
+                str = gets.chomp.downcase
+            end
+        end
+        @played_cells.push(str)
         changecell(str, "O")
     end
     private
